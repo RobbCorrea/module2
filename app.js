@@ -13,7 +13,8 @@ const connectDB    = require('./config/database');
 
 mongoose
   .connect(process.env.DB || "mongodb://localhost/test", {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true
   })
   .then(x => {
     console.log(
