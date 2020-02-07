@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title=title
+
+    link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/css/uikit.min.css")
+    link(rel="stylesheet" href="/stylesheets/style.css")
+
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.7.0/mapbox-gl.css' rel='stylesheet' />
+
+  body
+
+    nav.uk-navbar-container(uk-navbar='')
+      .uk-navbar-left
+        ul.uk-navbar-nav
+          if user 
+            li
+              a(href='#')=user.username
+              .uk-navbar-dropdown
+                ul.uk-nav.uk-navbar-dropdown-nav
+                  li
+                    a(href='/profile') Tu perfil
+                  li
+                    a(href='/logout') Salir
+          else 
+            li.uk-active
+                 a(href='/signup') Inscribirse
+            li.uk-active
+                 a(href='/login') Entrar
+
+      .uk-navbar-right
+        ul.uk-navbar-nav
+          li
+            a(href='#') HEYWERO!
+            .uk-navbar-dropdown
+              ul.uk-nav.uk-navbar-dropdown-nav
+                li.uk-active
+                  a(href='#') Para encontrar tu antojo
+                li
+                  a(href='/home') Busca Comidita
+                li.uk-nav-header Información
+                li
+                  a(href='#') Cómo se usa heywero
+                li
+                  a(href='#') Qué es heywero
+                li.uk-nav-divider
+                li
+                  a(href='#') Tecnologías heywero
+
+
+    block content
+
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.2.0/js/uikit-icons.min.js")
+    script(src="/javascripts/script.js")
