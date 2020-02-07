@@ -36,22 +36,26 @@ exports.signup = (req, res) => {
         return res.render("register", { title: "SignUp", error});
     }
 
-    User.register({ username, email }, password)
-    .then(usr => {
-        const options = {
-            filename: "register",
-            email: usr.email,
-            message: "Validated your email",
-            subject: "Confirm your email"
-        };
-        send(options);
-        req.login((usr, errorMessage) => {
-            if(errorMessage)
-            return res.render("register", { title: "SignUp", errorMessage });
-            res.redirect("/home");
-        });
-    })
-    .catch(errorMessage => 
-        res.render("register", { title: "SignUp", errorMessage })
-    );
+    User.create({ username , email, password, confirmPass, role })
+    .then(res => console.log(res))
+    .catch(err => console.log(err))
+
+    // User.register({ username, email }, password)
+    // .then(usr => {
+    //     const options = {
+    //         filename: "register",
+    //         email: usr.email,
+    //         message: "Validated your email",
+    //         subject: "Confirm your email"
+    //     };
+    //     send(options);
+    //     req.login((usr, errorMessage) => {
+    //         if(errorMessage)
+    //         return res.render("register", { title: "SignUp", errorMessage });
+    //         res.redirect("/home");
+    //     });
+    // })
+    // .catch(errorMessage => 
+    //     res.render("register", { title: "SignUp", errorMessage })
+    // );
 };
