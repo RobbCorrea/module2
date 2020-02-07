@@ -4,10 +4,9 @@ const { send } = require("../config/mailer");
 const schema = require("../models/User");
 
 exports.login = (req, res) => {
-    passport.authenticate("local", (err, user, info ={}) => {
-        const { message: err } = info;
+    passport.authenticate("local", (error, user, info ={}) => {
         if(error) {
-            return res.render("login", { err });
+            return res.render("login", { error });
         }
 
         req.login((user, err) => {
