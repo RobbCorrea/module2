@@ -11,19 +11,23 @@ const MongoStore   = require("connect-mongo")(session);
 const passport     = require("./config/passport");
 const connectDB    = require('./config/database');
 
-mongoose
-  .connect(process.env.DB || "mongodb://localhost/test", {
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-  })
-  .then(x => {
-    console.log(
-      `Connected to Mongo! Database name: "${x.connections[0].name}"`
-    );
-  })
-  .catch(err => {
-    console.error("Error connecting to mongo", err);
-  });
+// mongoose
+//   .connect(process.env.DB || "mongodb://localhost/test", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     useCreateIndex: true,
+//     useFindAndModify: true
+//   })
+//   .then(x => {
+//     console.log(
+//       `Connected to Mongo! Database name: "${x.connections[0].name}"`
+//     );
+//   })
+//   .catch(err => {
+//     console.error("Error connecting to mongo", err);
+//   });
+
+connectDB()
 
 const app_name = require("./package.json").name;
 const debug = require("debug")(
