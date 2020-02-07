@@ -6,12 +6,12 @@ const Puesto = require("../models/Puesto");
 /* GET home page */
 router.get("/", isAuth, (req, res, next) => {
   const { user } = req;
-  res.render("index", { user });
+  res.render("index", { user: user });
 });
 
 router.get("/home", isAuth, (req, res, next) => {
   const { user } = req;
-  res.render("home", { title: "Home", user });
+  res.render("home", { title: "Home", user: user });
 });
 
 router.get("/profile", isAuth, (req, res, next) => {
@@ -19,13 +19,13 @@ router.get("/profile", isAuth, (req, res, next) => {
  let help = {};
   Puesto.find({ locatario: user._id }).then(puestos => {
     console.log(puestos);
-    res.render("profile", { title: "Profile", user, puestos, help });
+    res.render("profile", { title: "Profile", user: user, puestos, help });
   });
 
 
   router.get("/card", isAuth, (req, res, next) => {
     const { user } = req;
-    res.render("puestoCard", { user });
+    res.render("puestoCard", { user: user });
   });
 });
 
